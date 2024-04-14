@@ -6,12 +6,13 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(clientCmd)
+	rootCmd.AddCommand()
 }
 
 var clientCmd = &cobra.Command{
-	Use: "client",
-	Run: ClientHandle,
+	Use:   "client",
+	Short: "client open",
+	Run:   ClientHandle,
 }
 
 func ClientHandle(cmd *cobra.Command, args []string) {
