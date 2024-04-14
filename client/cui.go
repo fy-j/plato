@@ -2,8 +2,7 @@ package client
 
 import (
 	"fmt"
-	"github.com/hardcore-os/plato/client/sdk"
-	sdk2 "github.com/hardcore-os/plato/common/sdk"
+	"github.com/hardcore-os/plato/common/sdk"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -63,7 +62,7 @@ func viewPrint(g *gocui.Gui, name, msg string, newline bool) {
 
 // doRecv work in goroutine
 func doRecv(g *gocui.Gui) {
-	recvChannel := chat.Recv()
+	recvChannel := 
 	for msg := range recvChannel {
 		if msg != nil {
 			switch msg.Type {
@@ -89,7 +88,7 @@ func doSay(g *gocui.Gui, cv *gocui.View) {
 	if cv != nil && err == nil {
 		p := cv.ReadEditor()
 		if p != nil {
-			msg := &sdk2.Message{
+			msg := &sdk.Message{
 				Type:       sdk.MsgTypeText,
 				Name:       "logic",
 				FormUserID: "123213",
