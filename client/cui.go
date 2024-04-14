@@ -3,6 +3,7 @@ package client
 import (
 	"fmt"
 	"github.com/hardcore-os/plato/client/sdk"
+	sdk2 "github.com/hardcore-os/plato/common/sdk"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -88,7 +89,7 @@ func doSay(g *gocui.Gui, cv *gocui.View) {
 	if cv != nil && err == nil {
 		p := cv.ReadEditor()
 		if p != nil {
-			msg := &sdk.Message{
+			msg := &sdk2.Message{
 				Type:       sdk.MsgTypeText,
 				Name:       "logic",
 				FormUserID: "123213",
