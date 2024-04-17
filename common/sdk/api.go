@@ -10,7 +10,7 @@ const (
 	MsgLogin         = "loginMsg"
 )
 
-type chat struct {
+type Chat struct {
 	NickName         string
 	UserId           string
 	SessionId        string
@@ -29,6 +29,27 @@ type Message struct {
 	Session    string
 }
 
-func (c *chat) Recv() <-chan *Message {
+func NewChat(serverAddr, nackName, userId, SessionId string) *Chat {
+	return &Chat{
+		NickName:  nackName,
+		UserId:    userId,
+		SessionId: SessionId,
+		connect:   newConnect(serverAddr),
+	}
+}
+
+func (c *Chat) GetCurClientID() {
+
+}
+
+func (c *Chat) Send(msg *Message) {
+	c.connect.Send(msg)
+}
+
+func (c *Chat) Recv() <-chan *Message {
 	return c.connect.recvChan
+}
+
+func (c *Chat) Close() {
+
 }
